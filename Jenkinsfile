@@ -5,11 +5,13 @@ pipeline {
         DOCKER_IMAGE = "ritishaa07iiitk/2023bec0014_45"
     }
 
-   stage('Checkout') {
-    steps {
-        git branch: 'main', url: 'https://github.com/anandritishaa07/devops-project.git'
-    }
-}
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/anandritishaa07/devops-project.git'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 bat 'docker build -t %DOCKER_IMAGE% .'
